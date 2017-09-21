@@ -10,6 +10,7 @@
 		86DC18A61F6F22C400E2B955 /* EmojiTextValidator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86DC189C1F6F22C400E2B955 /* EmojiTextValidator.framework */; };
 		86DC18AB1F6F22C400E2B955 /* EmojiTextValidatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86DC18AA1F6F22C400E2B955 /* EmojiTextValidatorTests.swift */; };
 		86DC18AD1F6F22C400E2B955 /* EmojiTextValidator.h in Headers */ = {isa = PBXBuildFile; fileRef = 86DC189F1F6F22C400E2B955 /* EmojiTextValidator.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		86DC18B71F6F6F9900E2B955 /* EmojiTextValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86DC18B61F6F6F9900E2B955 /* EmojiTextValidator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,6 +30,7 @@
 		86DC18A51F6F22C400E2B955 /* EmojiTextValidatorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EmojiTextValidatorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		86DC18AA1F6F22C400E2B955 /* EmojiTextValidatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiTextValidatorTests.swift; sourceTree = "<group>"; };
 		86DC18AC1F6F22C400E2B955 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		86DC18B61F6F6F9900E2B955 /* EmojiTextValidator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmojiTextValidator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +75,7 @@
 			children = (
 				86DC189F1F6F22C400E2B955 /* EmojiTextValidator.h */,
 				86DC18A01F6F22C400E2B955 /* Info.plist */,
+				86DC18B61F6F6F9900E2B955 /* EmojiTextValidator.swift */,
 			);
 			path = EmojiTextValidator;
 			sourceTree = "<group>";
@@ -149,6 +152,7 @@
 					86DC189B1F6F22C400E2B955 = {
 						CreatedOnToolsVersion = 8.3.3;
 						DevelopmentTeam = QPAAN3UY4S;
+						LastSwiftMigration = 0830;
 						ProvisioningStyle = Automatic;
 					};
 					86DC18A41F6F22C400E2B955 = {
@@ -198,6 +202,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				86DC18B71F6F6F9900E2B955 /* EmojiTextValidator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -324,6 +329,7 @@
 		86DC18B11F6F22C400E2B955 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = QPAAN3UY4S;
@@ -336,6 +342,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.none.EmojiTextValidator;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -343,6 +350,7 @@
 		86DC18B21F6F22C400E2B955 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = QPAAN3UY4S;
@@ -362,6 +370,7 @@
 		86DC18B41F6F22C400E2B955 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				DEVELOPMENT_TEAM = QPAAN3UY4S;
 				INFOPLIST_FILE = EmojiTextValidatorTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -374,6 +383,7 @@
 		86DC18B51F6F22C400E2B955 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				DEVELOPMENT_TEAM = QPAAN3UY4S;
 				INFOPLIST_FILE = EmojiTextValidatorTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -402,6 +412,7 @@
 				86DC18B21F6F22C400E2B955 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		86DC18B31F6F22C400E2B955 /* Build configuration list for PBXNativeTarget "EmojiTextValidatorTests" */ = {
 			isa = XCConfigurationList;
@@ -410,6 +421,7 @@
 				86DC18B51F6F22C400E2B955 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
