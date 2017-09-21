@@ -20,6 +20,8 @@ class EmojiTextValidator {
     
     
     func validateOnRules(text: String) -> Bool{
+        var modText = text
+        
         if useCharacterLimit && text.characters.count >= characterMax {
             return false
         }
@@ -28,13 +30,18 @@ class EmojiTextValidator {
             return false
         }
         
+        if allowEmoji {
+            let charArray = text.characters.filter{isEmoji(character: $0) == false } //Add in check for joiner character
+            let _ = charArray.map{modText.append($0)}
+        } else {
+            if isEmoji(text: text) {
+                return false
+            }
+        }
+        
+        
         return true
     }
-    
-    func validateDate() -> Bool{
-        return false
-    }
-    
     
     //https://stackoverflow.com/questions/30757193/find-out-if-character-in-string-is-emoji
     func isEmoji(text: String) -> Bool {
@@ -55,7 +62,23 @@ class EmojiTextValidator {
         return false
     }
     
+    func isEmoji(character: Character) -> Bool {
+        let charScalar = String(character).unicodeScalars
+        switch charScalar.first!.value {
+        case 0x1F600...0x1F64F, // Emoticons
+        0x1F300...0x1F5FF, // Misc Symbols and Pictographs
+        0x1F680...0x1F6FF, // Transport and Map
+        0x2600...0x26FF,   // Misc symbols
+        0x2700...0x27BF,   // Dingbats
+        0xFE00...0xFE0F,   // Variation Selectors
+        0x1F900...0x1F9FF:  // Supplemental Symbols and Pictographs
+            return true
+        default: return false
+        }
+    }
+    
     func isJoinerCharacter(text: UnicodeScalar) -> Bool{
         return text.value == 8205
     }
+    
 }
