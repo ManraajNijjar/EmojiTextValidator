@@ -18,6 +18,9 @@ class EmojiTextValidator {
     
     var allowEmoji = false
     
+    var emojiLimit = 0
+    var singleEmojiLimit = 0
+    
     
     func validateOnRules(text: String) -> Bool{
         var modText = text
@@ -39,8 +42,35 @@ class EmojiTextValidator {
             }
         }
         
-        
         return true
+    }
+    
+    func emojiSpamCheck(text: String) -> Bool{
+        var emojiCount = 0
+        var emojiDictionary = [Character: Int]()
+        let characters = filterToEmoji(text: text)
+        for character in characters {
+            if isEmoji(character: character){
+                emojiCount += 1
+                if emojiCount > emojiLimit {
+                    return false
+                }
+
+                if emojiDictionary[character] != nil {
+                    emojiDictionary[character]! += 1
+                } else {
+                    emojiDictionary[character] = 1
+                }
+                if emojiDictionary[character]! > singleEmojiLimit {
+                    return false
+                }
+            }
+        }
+        return true
+    }
+    
+    func filterToEmoji(text: String) -> [Character]{
+        return text.characters.filter{isEmoji(character: $0) == false }
     }
     
     //https://stackoverflow.com/questions/30757193/find-out-if-character-in-string-is-emoji
@@ -54,7 +84,8 @@ class EmojiTextValidator {
             0x2600...0x26FF,   // Misc symbols
             0x2700...0x27BF,   // Dingbats
             0xFE00...0xFE0F,   // Variation Selectors
-            0x1F900...0x1F9FF:  // Supplemental Symbols and Pictographs
+            0x1F900...0x1F9FF, // Supplemental Symbols and Pictographs
+            8205:               //Joiner characters
                 return true
             default: return false
             }
@@ -71,7 +102,8 @@ class EmojiTextValidator {
         0x2600...0x26FF,   // Misc symbols
         0x2700...0x27BF,   // Dingbats
         0xFE00...0xFE0F,   // Variation Selectors
-        0x1F900...0x1F9FF:  // Supplemental Symbols and Pictographs
+        0x1F900...0x1F9FF,  // Supplemental Symbols and Pictographs
+        8205:               //Joiner characters
             return true
         default: return false
         }

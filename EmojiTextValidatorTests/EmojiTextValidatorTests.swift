@@ -11,6 +11,8 @@ import XCTest
 
 class EmojiTextValidatorTests: XCTestCase {
     
+    let testClass = EmojiTextValidator()
+    
     override func setUp() {
         super.setUp()
         // Put setup code here. This method is called before the invocation of each test method in the class.
@@ -30,7 +32,38 @@ class EmojiTextValidatorTests: XCTestCase {
         // This is an example of a performance test case.
         self.measure {
             // Put the code you want to measure the time of here.
+            let _ = self.testClass.isEmoji(character: "👀")
         }
     }
+    
+    func testLetterCharacter() {
+        self.measure {
+            let _ = self.testClass.isEmoji(character: "a")
+        }
+        
+    }
+    
+    func testStringEmoji() {
+        // This is an example of a performance test case.
+        self.measure{
+            let _ = self.testClass.isEmoji(text: "👀")
+        }
+        
+    }
+    
+    func testStringLetter() {
+        // This is an example of a performance test case.
+        self.measure {
+            let _ = self.testClass.isEmoji(text: "a")
+        }
+        
+    }
+    
+    func testComplexEmoji(){
+        self.measure {
+            let _ = self.testClass.isEmoji(text: "👨‍👨‍👦‍👦")
+        }
+    }
+    
     
 }
