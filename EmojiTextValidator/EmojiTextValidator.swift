@@ -16,8 +16,9 @@ class EmojiTextValidator {
     var useCharacterMax = false
     var characterMin = 0
     
-    var allowEmoji = false
+    var noWhiteSpace = false
     
+    var allowEmoji = false
     var emojiLimit = 0
     var singleEmojiLimit = 0
     
@@ -31,6 +32,12 @@ class EmojiTextValidator {
         
         if useCharacterMax && text.characters.count <= characterMin {
             return false
+        }
+        
+        if noWhiteSpace {
+            if text.contains(" "){
+                return false
+            }
         }
         
         if allowEmoji {
